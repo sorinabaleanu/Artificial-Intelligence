@@ -1,0 +1,342 @@
+% Saved by Prover9-Mace4 Version 0.5, December 2007.
+
+set(ignore_option_dependencies). % GUI handles dependencies
+
+if(Prover9). % Options for Prover9
+  assign(max_seconds, 60).
+end_if.
+
+if(Mace4).   % Options for Mace4
+  assign(max_seconds, 60).
+end_if.
+
+formulas(assumptions).
+
+differentFrom(time11,time12).
+differentFrom(time11,time13).
+differentFrom(time11,time14).
+differentFrom(time11,time15).
+differentFrom(time11,time16).
+differentFrom(time11,time17).
+
+differentFrom(time12,time13).
+differentFrom(time12,time14).
+differentFrom(time12,time15).
+differentFrom(time12,time16).
+differentFrom(time12,time17).
+
+differentFrom(time13,time14).
+differentFrom(time13,time15).
+differentFrom(time13,time16).
+differentFrom(time13,time17).
+
+differentFrom(time14,time15).
+differentFrom(time14,time16).
+differentFrom(time14,time17).
+
+differentFrom(time15,time16).
+differentFrom(time15,time16).
+
+differentFrom(time16,time17).
+
+differentFrom(x,y) -> differentFrom(y,x).
+
+%sometimeBefore(x,y) - y is sometime before x
+
+sometimeBefore(time12,time11).
+
+sometimeBefore(time13,time12).
+sometimeBefore(time13,time11).
+
+sometimeBefore(time14,time12).
+sometimeBefore(time14,time11).
+sometimeBefore(time14,time13).
+
+sometimeBefore(time15,time14).
+sometimeBefore(time15,time13).
+sometimeBefore(time15,time12).
+sometimeBefore(time15,time11).
+
+sometimeBefore(time16,time15).
+sometimeBefore(time16,time14).
+sometimeBefore(time16,time13).
+sometimeBefore(time16,time12).
+sometimeBefore(time16,time11).
+
+sometimeBefore(time17,time16).
+sometimeBefore(time17,time15).
+sometimeBefore(time17,time14).
+sometimeBefore(time17,time13).
+sometimeBefore(time17,time12).
+sometimeBefore(time17,time11).
+
+-sometimeBefore(time17,time17).
+
+-sometimeBefore(time16,time17).
+-sometimeBefore(time16,time16).
+
+-sometimeBefore(time15,time17).
+-sometimeBefore(time15,time16).
+-sometimeBefore(time15,time15).
+
+-sometimeBefore(time14,time17).
+-sometimeBefore(time14,time16).
+-sometimeBefore(time14,time15).
+-sometimeBefore(time14,time14).
+
+-sometimeBefore(time13,time13).
+-sometimeBefore(time13,time14).
+-sometimeBefore(time13,time15).
+-sometimeBefore(time13,time16).
+-sometimeBefore(time13,time17).
+
+-sometimeBefore(time12,time12).
+-sometimeBefore(time12,time13).
+-sometimeBefore(time12,time14).
+-sometimeBefore(time12,time15).
+-sometimeBefore(time12,time16).
+-sometimeBefore(time12,time17).
+
+-sometimeBefore(time11,time11).
+-sometimeBefore(time11,time12).
+-sometimeBefore(time11,time13).
+-sometimeBefore(time11,time14).
+-sometimeBefore(time11,time15).
+-sometimeBefore(time11,time16).
+-sometimeBefore(time11,time17).
+
+%sometimeAfter(x,y) - y is sometime after x
+sometimeBefore(y,x) <-> sometimeAfter(x,y).
+
+%fourAfter(x,y) - y is exactly four hours after x
+
+fourAfter(time11,time15).
+fourAfter(time12,time16).
+fourAfter(time13,time17).
+
+-fourAfter(time11,time11).
+-fourAfter(time11,time12).
+-fourAfter(time11,time13).
+-fourAfter(time11,time14).
+-fourAfter(time11,time16).
+-fourAfter(time11,time17).
+
+-fourAfter(time12,time11).
+-fourAfter(time12,time12).
+-fourAfter(time12,time13).
+-fourAfter(time12,time14).
+-fourAfter(time12,time15).
+-fourAfter(time12,time17).
+
+-fourAfter(time13,time11).
+-fourAfter(time13,time12).
+-fourAfter(time13,time13).
+-fourAfter(time13,time14).
+-fourAfter(time13,time15).
+-fourAfter(time13,time16).
+
+-fourAfter(time14,time11).
+-fourAfter(time14,time12).
+-fourAfter(time14,time13).
+-fourAfter(time14,time14).
+-fourAfter(time14,time15).
+-fourAfter(time14,time16).
+-fourAfter(time14,time17).
+
+-fourAfter(time15,time11).
+-fourAfter(time15,time12).
+-fourAfter(time15,time13).
+-fourAfter(time15,time14).
+-fourAfter(time15,time15).
+-fourAfter(time15,time16).
+-fourAfter(time15,time17).
+
+-fourAfter(time16,time11).
+-fourAfter(time16,time12).
+-fourAfter(time16,time13).
+-fourAfter(time16,time14).
+-fourAfter(time16,time15).
+-fourAfter(time16,time16).
+-fourAfter(time16,time17).
+
+-fourAfter(time17,time11).
+-fourAfter(time17,time12).
+-fourAfter(time17,time13).
+-fourAfter(time17,time14).
+-fourAfter(time17,time15).
+-fourAfter(time17,time16).
+-fourAfter(time17,time17).
+
+%fourBefore(x,y)(x,y) - y  is exactly four hours before x
+fourAfter(y,x) <-> fourBefore(x,y).
+
+%oneAfter(x,y) - y is exactly one hour after x
+
+oneAfter(time11,time12).
+oneAfter(time12,time13).
+oneAfter(time13,time14).
+oneAfter(time14,time15).
+oneAfter(time15,time16).
+oneAfter(time16,time17).
+
+-oneAfter(time11,time11).
+-oneAfter(time11,time14).
+-oneAfter(time11,time13).
+-oneAfter(time11,time15).
+-oneAfter(time11,time16).
+-oneAfter(time11,time17).
+
+-oneAfter(time12,time11).
+-oneAfter(time12,time12).
+-oneAfter(time12,time14).
+-oneAfter(time12,time15).
+-oneAfter(time12,time16).
+-oneAfter(time12,time17).
+
+-oneAfter(time13,time11).
+-oneAfter(time13,time12).
+-oneAfter(time13,time13).
+-oneAfter(time13,time15).
+-oneAfter(time13,time16).
+-oneAfter(time13,time17).
+
+-oneAfter(time14,time11).
+-oneAfter(time14,time12).
+-oneAfter(time14,time13).
+-oneAfter(time14,time14).
+-oneAfter(time14,time16).
+-oneAfter(time14,time17).
+
+-oneAfter(time15,time11).
+-oneAfter(time15,time12).
+-oneAfter(time15,time13).
+-oneAfter(time15,time14).
+-oneAfter(time15,time15).
+-oneAfter(time15,time17).
+
+-oneAfter(time16,time11).
+-oneAfter(time16,time12).
+-oneAfter(time16,time13).
+-oneAfter(time16,time14).
+-oneAfter(time16,time15).
+-oneAfter(time16,time16).
+
+-oneAfter(time17,time11).
+-oneAfter(time17,time12).
+-oneAfter(time17,time13).
+-oneAfter(time17,time14).
+-oneAfter(time17,time15).
+-oneAfter(time17,time16).
+-oneAfter(time17,time17).
+
+%the names of the costumers
+alison(x) | blanche(x) | cristina(x) | flora(x) | georgia(x)| hope(x) | kelly(x).
+
+%the names of the stylists
+opal(x) | rohnda(x) | susie(x) | tammie(x) | victoria(x)| whitney(x) | yvonne(x).
+
+%the colors
+brownSable(x) | deepCopper(x) | honeyBlonde(x) | jetBlack(x) | midnightBlue(x)| vivaciousRed(x) | warmMocha(x).
+
+%each costumer has an appointment at a different time 
+alison(x) & alison(y) -> -differentFrom(x,y).
+blanche(x) & blanche(y) -> -differentFrom(x,y).
+cristina(x) & cristina(y) -> -differentFrom(x,y).
+flora(x) &  flora(y) -> -differentFrom(x,y).
+georgia(x) & georgia(y) -> -differentFrom(x,y).
+hope(x) &  hope(y) -> -differentFrom(x,y).
+kelly(x) & kelly(y) -> -differentFrom(x,y).
+
+%each stylist works at a different time 
+opal(x) & opal(y) -> -differentFrom(x,y).
+rohnda(x) & rohnda(y) -> -differentFrom(x,y).
+susie(x) & susie(y) -> -differentFrom(x,y).
+tammie(x) &  tammie(y) -> -differentFrom(x,y).
+victoria(x) & victoria(y) -> -differentFrom(x,y).
+whitney(x) &  whitney(y) -> -differentFrom(x,y).
+yvonne(x) & yvonne(y) -> -differentFrom(x,y).
+
+%each stylist works at a different time 
+brownSable(x) & brownSable(y) -> -differentFrom(x,y).
+deepCopper(x) & deepCopper(y) -> -differentFrom(x,y).
+honeyBlonde(x) & honeyBlonde(y) -> -differentFrom(x,y).
+jetBlack(x) &  jetBlack(y) -> -differentFrom(x,y).
+midnightBlue(x) & midnightBlue(y) -> -differentFrom(x,y).
+vivaciousRed(x) &  vivaciousRed(y) -> -differentFrom(x,y).
+warmMocha(x) & warmMocha(y) -> -differentFrom(x,y).
+
+%Clues
+
+%1.The costumer that chose midnight blue is sometime before Georgia
+sometimeBefore(x,y) <-  midnightBlue(y) & georgia(x) .
+
+%2. Susie's costumer has her appointment 4 hours after Tammie's client
+fourAfter(x,y) <- tammie(x) & susie(y).
+
+%3.Whitney's costumer has her appointment 4 hours before Blanche.
+fourBefore(x,y) <- whitney(y) & blanche(x).
+
+%4.Yvonne's costumer has her appointment sometime after the client that chose warm Mocha.
+sometimeAfter(x,y) <-  yvonne(y) & warmMocha(x) .
+
+%5. Yvonne's costumer, the client that chose honey blonde and Georgia are three different costumers.
+
+yvonne(x) & honeyBlonde(y) -> differentFrom(x,y).
+yvonne(x) & georgia(y) -> differentFrom(x,y).
+honeyBlonde(x) & georgia(y) -> differentFrom(x,y).
+
+%6.Of Blanche and Rhonda's costumer one has the 4 pm appointment and the other one chose jet black.
+(blanche(time16) &( rohnda(x)<-> jetBlack(x)))|(rohnda(time16) &( blanche(x)<-> jetBlack(x))).
+
+%7. The client tat chose jet black is either Opal's or Susie's client.
+(opal(x) <-> jetBlack(x))|(susie(x) <-> jetBlack(x)).
+
+%8.Georgia isn't helped by Rhonda.
+georgia(x) & rohnda(y) -> differentFrom(x,y).
+
+%9. Kelly doesn't have the 11 am appointment
+-kelly(time11).
+
+%10. Of Opal's costumer and the client that chose vivacious red one has the 3pm appointment and the other one is flora
+
+(opal(time15)&(vivaciousRed(x)<->flora(x)))|(vivaciousRed(time15)&(opal(x)<->flora(x))).
+
+%11. Alison , the costumer that chose brown sable, Susie's costumer, the costumer that chose honey blonde, 
+%the client that chose the 2pm appointment and victoria's customere are all different
+
+-alison(time14).
+-brownSable(time14).
+-susie(time14).
+-honeyBlonde(time14).
+-victoria(time14).
+
+alison(x) & brownSable(y) -> differentFrom(x,y).
+alison(x) & susie(y) -> differentFrom(x,y).
+alison(x) & honeyBlonde(y) -> differentFrom(x,y).
+alison(x) & victoria(y) -> differentFrom(x,y).
+
+%brownSable(x) & susie(y) -> differentFrom(x,y). - this staement is false 
+brownSable(x) & victoria(y) -> differentFrom(x,y).
+
+susie(x) & honeyBlonde(y) -> differentFrom(x,y).
+
+honeyBlonde(x) & victoria(y) -> differentFrom(x,y).
+
+%12. The costumer that chose honey blonde has her appointment 1 hour after the client that chose vivacious red
+oneAfter(x,y) <- honeyBlonde(y) & vivaciousRed(x).
+
+%13. Kelly didn't choose honey blonde.
+kelly(x) & honeyBlonde(y) -> differentFrom(x,y).
+
+%14. Alison didn't choose deep copper.
+alison(x) & deepCopper(y) -> differentFrom(x,y).
+
+%15. Cristina doesn't have the 3pm appointment
+-cristina(time15).
+
+end_of_list.
+
+formulas(goals).
+
+end_of_list.
+

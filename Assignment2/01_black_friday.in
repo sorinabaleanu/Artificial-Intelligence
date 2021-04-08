@@ -1,0 +1,244 @@
+% Saved by Prover9-Mace4 Version 0.5, December 2007.
+
+set(ignore_option_dependencies). % GUI handles dependencies
+
+if(Prover9). % Options for Prover9
+  assign(max_seconds, 60).
+end_if.
+
+if(Mace4).   % Options for Mace4
+  assign(max_seconds, 60).
+end_if.
+
+formulas(assumptions).
+
+%5 friends drinking juice
+
+differentFrom(man1,man2).
+differentFrom(man1,man3).
+differentFrom(man1,man4).
+differentFrom(man1,man5).
+
+differentFrom(man2,man3).
+differentFrom(man2,man4).
+differentFrom(man2,man5).
+
+differentFrom(man3,man4).
+differentFrom(man3,man5).
+
+differentFrom(man4,man5).
+
+differentFrom(x,y) -> differentFrom(y,x).
+
+%rightTo(x,y) - y is exactly to the right of x
+
+rightTo(man1,man2).
+rightTo(man2,man3).
+rightTo(man3,man4).
+rightTo(man4,man5).
+
+-rightTo(man1,man1).
+-rightTo(man1,man3).
+-rightTo(man1,man4).
+-rightTo(man1,man5).
+
+-rightTo(man2,man1).
+-rightTo(man2,man2).
+-rightTo(man2,man4).
+-rightTo(man2,man5).
+
+-rightTo(man3,man1).
+-rightTo(man3,man2).
+-rightTo(man3,man3).
+-rightTo(man3,man5).
+
+-rightTo(man4,man1).
+-rightTo(man4,man2).
+-rightTo(man4,man3).
+-rightTo(man4,man4).
+
+-rightTo(man5,man1).
+-rightTo(man5,man2).
+-rightTo(man5,man3).
+-rightTo(man5,man4).
+-rightTo(man5,man5).
+
+%leftTo(x,y) - y is exactly to the left of x
+rightTo(y,x) <-> leftTo(x,y).
+
+%nextTo(x,y) - y is to the left or to the right of x
+rightTo(x,y) | leftTo(x,y) <-> nextTo(x,y).
+
+%somewhereRight(x,y) - y is somewhere to the right of x
+
+somewhereRight(man1,man2).
+somewhereRight(man1,man3).
+somewhereRight(man1,man4).
+somewhereRight(man1,man5).
+
+somewhereRight(man2,man3).
+somewhereRight(man2,man4).
+somewhereRight(man2,man5).
+
+somewhereRight(man3,man4).
+somewhereRight(man3,man5).
+
+somewhereRight(man4,man5).
+
+-somewhereRight(man1,man1).
+
+-somewhereRight(man2,man1).
+-somewhereRight(man2,man2).
+
+-somewhereRight(man3,man1).
+-somewhereRight(man3,man2).
+-somewhereRight(man3,man3).
+
+-somewhereRight(man4,man1).
+-somewhereRight(man4,man2).
+-somewhereRight(man4,man3).
+-somewhereRight(man4,man4).
+
+-somewhereRight(man5,man1).
+-somewhereRight(man5,man2).
+-somewhereRight(man5,man3).
+-somewhereRight(man5,man4).
+-somewhereRight(man5,man5).
+
+%somewhereLeft(x,y) - y is somewhere to the left of x
+somewhereRight(y,x) <-> somewhereLeft(x,y).
+
+%somewhereInBetween (x,y,z) - y is somwhere in between x and z, x is to the left of y and z is to the right of y
+somewhereLeft(y,x) & somewhereRight(y,z) <-> somewhereInBetween (x,y,z).
+
+%the colors of the men's t-shirts
+black(x) | blue(x) | green(x) | red(x) | white(x).
+
+%the name of the men
+dustin(x) | eugene(x) | hank(x) | keith(x) | sean(x).
+
+%the products purchased
+beardtrimmer(x) | gameconsole(x) | laptop(x) | smartphone(x) | tv(x).
+
+%the discounts
+fortyp(x) | fiftyp(x) | sixtyp(x) | seventyp(x) | eightyp(x).
+
+%the ages
+twentyfivey(x) | thirtyy(x)| thirtyfivey(x) | fortyy(x) | fortyfivey(x).
+
+%the juices men drink
+apple(x) | cranberry(x)| grape(x) | lemon(x) | orange(x).
+
+%each man has a different colored t-shirt 
+black(x) & black(y) -> -differentFrom(x,y).
+blue(x) & blue(y) -> -differentFrom(x,y).
+green(x) & green(y) -> -differentFrom(x,y).
+red(x) & red(y) -> -differentFrom(x,y).
+white(x) & white(y) -> -differentFrom(x,y).
+
+%each man has a different age
+dustin(x) & dustin(y) -> -differentFrom(x,y).
+eugene(x) & eugene(y) -> -differentFrom(x,y).
+hank(x) & hank(y) -> -differentFrom(x,y).
+keith(x) & keith(y) -> -differentFrom(x,y).
+sean(x) & sean(y) -> -differentFrom(x,y).
+
+%each man has purchased a different item
+beardtrimmer(x) & beardtrimmer(y) -> -differentFrom(x,y).
+gameconsole(x) & gameconsole(y) -> -differentFrom(x,y).
+laptop(x) & laptop(y) -> -differentFrom(x,y).
+smartphone(x) & smartphone(y) -> -differentFrom(x,y).
+tv(x) & tv(y) -> -differentFrom(x,y).
+
+%each man has a different discount
+fortyp(x) & fortyp(y) -> -differentFrom(x,y).
+fiftyp(x) & fiftyp(y) -> -differentFrom(x,y).
+sixtyp(x) & sixtyp(y) -> -differentFrom(x,y).
+seventyp(x) & seventyp(y) -> -differentFrom(x,y).
+eightyp(x) & eightyp(y) -> -differentFrom(x,y).
+
+%each man has a different age
+twentyfivey(x) & twentyfivey(y) -> -differentFrom(x,y).
+thirtyy(x) & thirtyy(y) -> -differentFrom(x,y).
+thirtyfivey(x) & thirtyfivey(y) -> -differentFrom(x,y).
+fortyy(x) &  fortyy(y) -> -differentFrom(x,y).
+fortyfivey(x) & fortyfivey(y) -> -differentFrom(x,y).
+
+%each man is drinking a different juice
+apple(x) & apple(y) -> -differentFrom(x,y).
+cranberry(x) & cranberry(y) -> -differentFrom(x,y).
+grape(x) & grape(y) -> -differentFrom(x,y).
+lemon(x) &  lemon(y) -> -differentFrom(x,y).
+orange(x) & orange(y) -> -differentFrom(x,y).
+
+%Clues
+
+%1.The man drinking the Orange juice is exactly to the right of the man who got the 70 discount
+rightTo(x,y) <-  orange(y) & seventyp(x) .
+
+%2. Keith is 45 years old
+keith(x) <-> fortyfivey(x).
+
+%3.The man who bought the TV is exactly to the left of the man wearing the Red shirt.
+leftTo(x,y) <-  tv(y) & red(x) .
+
+%4.At the third position is the man who got the 50% discount
+fiftyp(man3).
+
+%5. Keith is next to the man wearing the White shirt.
+nextTo(x,y) <- keith(x) & white(y).
+
+%6. The 25-year-old man is somewhere between the 35-year-old man and the 40-year-old man, in that order.
+somewhereInBetween(x,y,z) <-   thirtyfivey(x)& twentyfivey(y) & fortyy(z) .
+
+%7. The man drinking Apple juice bought the Smartphone.
+apple(x) <-> smartphone(x).
+
+%8. The 30-year-old man is exactly to the left of the man that bought the Beard trimmer.
+leftTo(x,y) <- beardtrimmer(x) & thirtyy(y) .
+
+%9. Sean is the youngest.
+sean(x) <-> twentyfivey(x).
+
+%10. The man that got the 40% discount is exactly to the right of the man who bought the Beard trimmer.
+rightTo(x,y) <- beardtrimmer(x) & fortyp(y) .
+
+%11. Keith is next to the 35-year-old man.
+nextTo(x,y) <- keith(x) & thirtyfivey(y).
+
+%12. Eugene is 40 years old.
+eugene(x) <-> fortyy(x).
+
+%13. Sean is wearing the Black shirt.
+sean(x) <-> black(x).
+
+%14. At the fourth position is the man who got the biggest discount.
+eightyp(man4).
+
+%15. Dustin got 60% off.
+dustin(x) <-> sixtyp(x).
+
+%16. The man drinking the Lemon juice is exactly to the right of the man drinking the Grape juice
+rightTo(x,y) <-  lemon(y) & grape(x) .
+
+%17. Keith bought a Game console
+keith(x) <-> gameconsole(x).
+
+%18. The man who got the 80% discount is exactly to the left of the man who is wearing the Blue shirt.
+leftTo(x,y) <- blue(x) & eightyp(y).
+
+%19. The man drinking Grape juice bought the Beard trimmer.
+grape(x) <-> beardtrimmer(x).
+
+%20.The man wearing the Black shirt is somewhere to the right of Keith.
+somewhereRight(x,y) <-  black(y) & keith(x) .
+
+%21.The man that bought the Smartphone is next to the man wearing the Black shirt.
+nextTo(x,y) <- smartphone(x) & black(y).
+
+end_of_list.
+
+formulas(goals).
+
+end_of_list.
+

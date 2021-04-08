@@ -1,0 +1,245 @@
+% Saved by Prover9-Mace4 Version 0.5, December 2007.
+
+set(ignore_option_dependencies). % GUI handles dependencies
+
+if(Prover9). % Options for Prover9
+  assign(max_seconds, 60).
+end_if.
+
+if(Mace4).   % Options for Mace4
+  assign(max_seconds, 60).
+end_if.
+
+formulas(assumptions).
+
+differentFrom(donnor1,donnor2).
+differentFrom(donnor1,donnor3).
+differentFrom(donnor1,donnor4).
+differentFrom(donnor1,donnor5).
+
+differentFrom(donnor2,donnor3).
+differentFrom(donnor2,donnor4).
+differentFrom(donnor2,donnor5).
+
+differentFrom(donnor3,donnor4).
+differentFrom(donnor3,donnor5).
+
+differentFrom(donnor4,donnor5).
+
+differentFrom(x,y) -> differentFrom(y,x).
+
+%rightTo(x,y) - y is exactly to the right of x
+
+rightTo(donnor1,donnor2).
+rightTo(donnor2,donnor3).
+rightTo(donnor3,donnor4).
+rightTo(donnor4,donnor5).
+
+-rightTo(donnor1,donnor1).
+-rightTo(donnor1,donnor3).
+-rightTo(donnor1,donnor4).
+-rightTo(donnor1,donnor5).
+
+-rightTo(donnor2,donnor1).
+-rightTo(donnor2,donnor2).
+-rightTo(donnor2,donnor4).
+-rightTo(donnor2,donnor5).
+
+-rightTo(donnor3,donnor1).
+-rightTo(donnor3,donnor2).
+-rightTo(donnor3,donnor3).
+-rightTo(donnor3,donnor5).
+
+-rightTo(donnor4,donnor1).
+-rightTo(donnor4,donnor2).
+-rightTo(donnor4,donnor3).
+-rightTo(donnor4,donnor4).
+
+-rightTo(donnor5,donnor1).
+-rightTo(donnor5,donnor2).
+-rightTo(donnor5,donnor3).
+-rightTo(donnor5,donnor4).
+-rightTo(donnor5,donnor5).
+
+%leftTo(x,y) - y is exactly to the left of x
+rightTo(y,x) <-> leftTo(x,y).
+
+%nextTo(x,y) - y is to the left or to the right of x
+rightTo(x,y) | leftTo(x,y) <-> nextTo(x,y).
+
+%somewhereRight(x,y) - y is somewhere to the right of x
+
+somewhereRight(donnor1,donnor2).
+somewhereRight(donnor1,donnor3).
+somewhereRight(donnor1,donnor4).
+somewhereRight(donnor1,donnor5).
+
+somewhereRight(donnor2,donnor3).
+somewhereRight(donnor2,donnor4).
+somewhereRight(donnor2,donnor5).
+
+somewhereRight(donnor3,donnor4).
+somewhereRight(donnor3,donnor5).
+
+somewhereRight(donnor4,donnor5).
+
+-somewhereRight(donnor1,donnor1).
+
+-somewhereRight(donnor2,donnor1).
+-somewhereRight(donnor2,donnor2).
+
+-somewhereRight(donnor3,donnor1).
+-somewhereRight(donnor3,donnor2).
+-somewhereRight(donnor3,donnor3).
+
+-somewhereRight(donnor4,donnor1).
+-somewhereRight(donnor4,donnor2).
+-somewhereRight(donnor4,donnor3).
+-somewhereRight(donnor4,donnor4).
+
+-somewhereRight(donnor5,donnor1).
+-somewhereRight(donnor5,donnor2).
+-somewhereRight(donnor5,donnor3).
+-somewhereRight(donnor5,donnor4).
+-somewhereRight(donnor5,donnor5).
+
+%somewhereLeft(x,y) - y is somewhere to the left of x
+somewhereRight(y,x) <-> somewhereLeft(x,y).
+
+%somewhereInBetween (x,y,z) - y is somwhere in between x and z, x is to the left of y and z is to the right of y
+somewhereLeft(y,x) & somewhereRight(y,z) <-> somewhereInBetween (x,y,z).
+
+%the colors of the donnors's t-shirts
+black(x) | blue(x) | green(x) | purple(x) | red(x).
+
+%the name of the donnors
+andrea(x) | brooke(x) | kathleen(x) | meghan(x) | nichole(x).
+
+%the blood type
+a(x) | ab(x) | bp(x) | bn(x) | o(x).
+
+%the weights
+w120(x) | w130(x) | w140(x) | w150(x) | w160(x).
+
+%the ages
+twentyfivey(x) | thirtyy(x)| thirtyfivey(x) | fortyy(x) | fortyfivey(x).
+
+%the jobs
+actress(x) | chef(x)| engineer(x) | florist(x) | policewoman(x).
+
+%each donnor has a different colored t-shirt 
+black(x) & black(y) -> -differentFrom(x,y).
+blue(x) & blue(y) -> -differentFrom(x,y).
+green(x) & green(y) -> -differentFrom(x,y).
+red(x) & red(y) -> -differentFrom(x,y).
+purple(x) & purple(y) -> -differentFrom(x,y).
+
+%each donnor has a different name
+andrea(x) & andrea(y) -> -differentFrom(x,y).
+brooke(x) & brooke(y) -> -differentFrom(x,y).
+kathleen(x) & kathleen(y) -> -differentFrom(x,y).
+meghan(x) & meghan(y) -> -differentFrom(x,y).
+nichole(x) & nichole(y) -> -differentFrom(x,y).
+
+%each donnor has a different blood type
+a(x) & a(y) -> -differentFrom(x,y).
+ab(x) & ab(y) -> -differentFrom(x,y).
+bp(x) & bp(y) -> -differentFrom(x,y).
+bn(x) & bn(y) -> -differentFrom(x,y).
+o(x) & o(y) -> -differentFrom(x,y).
+
+%each donnoor has a different weight
+w120(x) & w120(y) -> -differentFrom(x,y).
+w130(x) & w130(y) -> -differentFrom(x,y).
+w140(x) & w140(y) -> -differentFrom(x,y).
+w150(x) & w150(y) -> -differentFrom(x,y).
+w160(x) & w160(y) -> -differentFrom(x,y).
+
+%each donnor has a different age
+twentyfivey(x) & twentyfivey(y) -> -differentFrom(x,y).
+thirtyy(x) & thirtyy(y) -> -differentFrom(x,y).
+thirtyfivey(x) & thirtyfivey(y) -> -differentFrom(x,y).
+fortyy(x) &  fortyy(y) -> -differentFrom(x,y).
+fortyfivey(x) & fortyfivey(y) -> -differentFrom(x,y).
+
+%each donnor has a different job
+actress(x) & actress(y) -> -differentFrom(x,y).
+chef(x) & chef(y) -> -differentFrom(x,y).
+engineer(x) & engineer(y) -> -differentFrom(x,y).
+florist(x) & florist(y) -> -differentFrom(x,y).
+policewoman(x) & policewoman(y) -> -differentFrom(x,y).
+
+%Clues
+
+%1.The A+ donor is next to the B+ donor.
+nextTo(x,y) <-  a(x) & bp(y) .
+
+%2.Brooke is at one of the ends.
+brooke(donnor1) | brooke(donnor5).
+
+%3.The woman wearing the Black shirt is somewhere to the left of the 150 lb woman.
+somewhereLeft(x,y) <-  black(y) & w150(x) .
+
+%4.The Actress is next to the Chef.
+nextTo(x,y) <-  actress(y) & chef(x) .
+
+%5. Kathleen is 40 years old.
+kathleen(x) <-> fortyy(x).
+
+%6.The Florist is somewhere to the right of the woman wearing the Purple shirt.
+somewhereRight(x,y) <-  florist(y) & purple(x) .
+
+%7. The oldest donor weighs 130 lb.
+fortyfivey(x) <-> w130(x).
+
+%8. Brooke is next to Nichole.
+nextTo(x,y) <- brooke(x) &  nichole(y) .
+
+%9. The 35-year-old woman is exactly to the left of the 30-year-old woman.
+leftTo(x,y) <- thirtyfivey(y) & thirtyy(x) .
+
+%10. The 120 lb donor is somewhere between the the O- donor and the 150 lb donor, in that order.
+somewhereInBetween(x,y,z) <-   o(x)& w120(y) & w150(z) .
+
+%11. Kathleen is at one of the ends.
+kathleen(donnor1)|kathleen(donnor5).
+
+%12. The woman wearing the Purple shirt is somewhere to the right of the woman wearing the Green shirt.
+somewhereRight(x,y) <-  purple(y) & green(x) .
+
+%13. The B+ donor weighs 140 lb.
+bp(x) <-> w140(x).
+
+%14.The youngest woman is next to the 30-year-old woman.
+nextTo(x,y) <- twentyfivey(x) &  thirtyy(y) .
+
+%15. The woman considered universal recipient is exactly to the left of the A+ donor.
+leftTo(x,y) <- a(x) & ab(y).
+
+%16. Meghan is somewhere to the right of the woman wearing the Purple shirt.
+somewhereRight(x,y) <-  meghan(y) & purple(x) .
+
+%17. The woman wearing the Green shirt is somewhere between the Actress and the woman wearing the Red shirt, in that order.
+somewhereInBetween(x,y,z) <-   actress(x)& green(y) & red(z) .
+
+%18. At one of the ends is the 130 lb woman.
+w130(donnor1) | w130(donnor5).
+
+%19. The universal donor is 35 years old.
+o(x) <-> thirtyfivey(x).
+
+%20.The Florist is somewhere between the Actress and the Engineer, in that order.
+somewhereInBetween(x,y,z) <-   actress(x)& florist(y) & engineer(z) .
+
+%21.The woman wearing the Blue shirt is somewhere to the left of the woman wearing the Red shirt.
+somewhereLeft(x,y) <-  blue(y) & red(x) .
+
+%22.The AB+ donor is next to the youngest woman.
+nextTo(x,y) <- ab(x) &  twentyfivey(y) .
+
+end_of_list.
+
+formulas(goals).
+
+end_of_list.
+
